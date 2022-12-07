@@ -1,9 +1,5 @@
 import {createSlice, current} from '@reduxjs/toolkit';
 
-// const initialState = {
-//   groceries: [],
-// };
-
 export const todosSlice = createSlice({
   name: 'todos',
   initialState: {
@@ -11,16 +7,12 @@ export const todosSlice = createSlice({
   },
   reducers: {
     deleteGroceryItem: (state, action) => {
-      state.groceries.filter(item => {
-        if (item !== action.payload) {
-          return item;
-        }
-      });
+      console.log('action.payload in todos.js is ', action.payload);
+
+      state.groceries = state.groceries.filter(item => item !== action.payload);
     },
     addGroceryItem: (state, action) => {
-      //   state.value += action.payload;
       state.groceries.push(action.payload);
-      console.log(current(state));
     },
   },
 });

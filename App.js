@@ -12,13 +12,11 @@ import AddButton from './components/AddButton';
 import {useSelector, useDispatch} from 'react-redux';
 import {deleteGroceryItem, addGroceryItem} from './redux/todos';
 
-// const someGroceries = ['eggs', 'milk', 'bread'];
 const App = () => {
-  //   const [groceries, setGroceries] = useState(someGroceries);
   const [groceryItem, setGroceryItem] = useState('');
   const {groceries} = useSelector(state => state.todos);
-  console.log('groceries are ', groceries);
   const dispatch = useDispatch();
+  console.log('groceries are ', groceries);
 
   const renderItem = ({item}) => {
     return (
@@ -39,6 +37,7 @@ const App = () => {
 
   const addFood = () => {
     dispatch(addGroceryItem(groceryItem));
+    setGroceryItem('');
   };
 
   return (
@@ -73,8 +72,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   fistView: {
-    // borderWidth: 1,
-    // borderColor: 'black',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -88,8 +85,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   flatListStyle: {
-    // justifyContent: 'center',
-    // alignItems: 'center',
     borderWidth: 2,
     borderColor: 'black',
     alignSelf: 'center',
